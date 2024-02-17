@@ -8,6 +8,7 @@ This project integrates a SvelteKit application with Google Sheets via the Googl
 - Google Sheets API: Utilizes Google Apps Script to append form submissions to a Google Sheet.
 - CAPTCHA Integration: Implements Cloudflare Turnstile to prevent spam submissions.
 - Responsive Form: A styled and responsive form for submitting domain purchase offers.
+- Real time notifications using telegram bot API. (Optional)
 
 ## Setup and Deployment
 
@@ -22,6 +23,7 @@ This project integrates a SvelteKit application with Google Sheets via the Googl
 - SvelteKit: For building the frontend application.
 - Google Apps Script: To connect the form with Google Sheets.
 - Cloudflare Turnstile: For CAPTCHA verification.
+- Telegram bot API. (Optional)
 
 ## Google Sheets API Setup for Project
 
@@ -46,10 +48,24 @@ function doPost(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   var data = JSON.parse(e.postData.contents);
   sheet.appendRow([data.name, data.email, data.offer, data.message]);
+  //  Add your real time webhooks here for alerts ex telegram, slack, email, telegram etc as needed.
+  // Send notification to Telegram
+  //sendTelegramNotification(`New domain offer received for llm.ing entry received: Name - ${data.name}, Email - ${data.email}, Offer - ${data.offer}, Message - ${data.message}`);
   return ContentService.createTextOutput(JSON.stringify({ "result": "success", "data": data }))
     .setMimeType(ContentService.MimeType.JSON);
-//  Add your real time webhooks here for alerts ex telegram, slack, email, telegram etc as needed.
 }
+
+// function sendTelegramNotification(message) {
+//   var token = 'YOUR_TELEGRAM_BOT_TOKEN'; // Replace with your Telegram bot token
+//   var chatId = 'YOUR_CHAT_ID'; // Replace with your personal chat ID with the bot
+//   var url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+//   try {
+//     UrlFetchApp.fetch(url);
+//   } catch (e) {
+//     Logger.log("Failed to send Telegram notification: " + e.message);
+//   }
+// }
 ```
 
 - This code will parse the incoming POST request and append the data to the active sheet.
