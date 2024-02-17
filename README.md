@@ -77,6 +77,24 @@ function doPost(e) {
 - Set `Who has access` to `Anyone`.
 - Click `Deploy` and copy the provided web app URL.
 
-### Step 5: Integrate with Your Project
+## Deploy to Cloudflare Pages (Optional, but recommended or any other hosting service like Vercel, Netlify, etc.)
 
-- Use the web app URL in your project's server-side code to send form data to the Google Sheet.
+Follow these steps to deploy this project to Cloudflare Pages:
+
+1. **Fork or clone this repository:** Start by forking this repository to your GitHub account or cloning it to your local machine.
+
+2. **Sign up or log in to Cloudflare:** If you haven't already, [sign up](https://dash.cloudflare.com/sign-up) for a Cloudflare account or log in.
+
+3. **Create a new project on Cloudflare Pages:** Go to the [Cloudflare Pages dashboard](https://pages.cloudflare.com/) and click on the 'Click on pages tab'(Workers, Pages will be side-by-side).
+
+4. **Connect your GitHub account:** Follow the prompts to connect your GitHub account to Cloudflare Pages if you haven't done so already. This allows Cloudflare Pages to access your repositories.
+
+5. **Select the repository:** Choose the repository you forked or cloned for this project.
+
+6. **Configure your project:** Set up the build settings for your SvelteKit project. For most SvelteKit projects, the build command is `npm run build` and the build output directory is `build`. Make sure to set environment variables as required by your project.
+
+7. **Deploy:** Click on the 'Save and Deploy' button. Cloudflare Pages will then build and deploy your site.
+
+8. **Set up additional features:** Optionally, configure additional features such as custom domains, environment variables, or access restrictions as needed through the Cloudflare dashboard.
+
+Your application is now deployed to Cloudflare Pages! You can access it using the provided URL and connect it to a domain you want to sell.
